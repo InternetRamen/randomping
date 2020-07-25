@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+
 const simpleEmbed = require('../functions/embed')
 const errorEmbed = require('../functions/errorEmbed')
 const settings = require('../jsonFiles/settings.json')

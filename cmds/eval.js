@@ -1,7 +1,7 @@
 
 
-module.exports.run = async (bot, message, args, tools) => {
-    if(message.author.id !== "728255006079189022") return;
+module.exports.run = async (bot, message, args,) => {
+    if(message.author.id !== "728255006079189022") return message.channel.send("You do not have the permissions to use this command.")
 
 
     function clean(text) {
@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args, tools) => {
         else
             return text;
     }
-    if(message.author.id !== "345349646253817857") return;
+    if(message.author.id !== "728255006079189022") return;
     try {
         const code = args.join(" ");
         let evaled = eval(code);

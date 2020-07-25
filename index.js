@@ -61,7 +61,7 @@ bot.on('message', async message => {
         }
 
         let cmdFile = bot.cmds.get(cmd);
-
+        if (!cmdFile) return;
         if (obj.tips === true && confirmTip === "true" && cmdFile) message.channel.send(ranTip)
         if (cmdFile) cmdFile.run(bot, message, args);
 

@@ -55,6 +55,10 @@
     {
       "name": "settings",
       "description": "Displays the current settings."
+    },
+    {
+      "name": "invite",
+      "description": "Displays the invite link to the bot."
     }
   ]
 }
