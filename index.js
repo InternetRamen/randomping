@@ -1,6 +1,14 @@
-const { Client, Intents, Collection } = require("discord.js");
+const { Client, Intents, Collection } = require("discord.js-light");
 const i = new Intents(Intents.ALL).remove("GUILD_MESSAGE_TYPING");
-const bot = new Client({ws: {intents: i}});
+const bot = new Client({
+    ws: {intents: i},
+    cacheGuilds: true,
+    cacheChannels: false,
+    cacheOverwrites: false,
+    cacheRoles: false,
+    cacheEmojis: false,
+    cachePresences: false
+    });
 const config = require('./config.json')
 const fs = require('fs')
 const Enmap = require('enmap')
@@ -24,7 +32,12 @@ fs.readdir("./cmds/", (err, files) => {
 });
 
 bot.on('ready', () => {
-    console.log(`Bot is ready for ${bot.guilds.cache.size}, serving ${bot.users.cache.size}`)
+    console.log(`Bot is ready for ${bot.guilds.cache.size}`)
+    setInterval(function() {
+        bot.sweepUsers()
+        bot.sweepChannels()
+        console.log("Swept")
+    }, 8.64e+7)
 })
 
 
@@ -61,7 +74,6 @@ bot.on('message', async message => {
         }
 
         let cmdFile = bot.cmds.get(cmd);
-        if (!cmdFile) return;
         if (obj.tips === true && confirmTip === "true" && cmdFile) message.channel.send(ranTip)
         if (cmdFile) cmdFile.run(bot, message, args);
 
@@ -85,21 +97,21 @@ bot.on('message', async message => {
         const errorEmbed = require('./functions/errorEmbed')
         const functions = require('./functions/someone')
 
-        let checkOne = await functions.roleOnly(obj, message.member)
+        let checkOne = await functions.roleOnly(obj, message.member, message.guild)
         if (checkOne !== "Pass") return message.channel.send(errorEmbed("Invalid Permissions: You do not have permission to use this command."))
 
         let checkTwo = await functions.adminOnly(obj, message.member)
         if (checkTwo !== "Pass") return message.channel.send(errorEmbed("Invalid Permissions: You do not have permission to use this command."))
-
-        let arrayOfMemberIDs = message.guild.members.cache.map(val => val.id)
+        let allMembers = await message.guild.members.fetch()
+        let arrayOfMemberIDs = await allMembers.map(val => val.id)
         console.log('Default \n')
         console.log(arrayOfMemberIDs.length)
 
-        if (obj.filterBots === true) arrayOfMemberIDs = arrayOfMemberIDs.filter(val => !message.guild.members.cache.get(val).user.bot)
+        if (obj.filterBots === true) arrayOfMemberIDs = arrayOfMemberIDs.filter(val => !allMembers.get(val).user.bot)
         console.log('Filter Bots \n')
         console.log(arrayOfMemberIDs.length)
 
-        if (obj.selfPing === true) arrayOfMemberIDs = arrayOfMemberIDs.filter(val => val !== message.author.id)
+        if (obj.selfPing === false) arrayOfMemberIDs = arrayOfMemberIDs.filter(val => val !== message.author.id)
         console.log('Self Ping \n')
         console.log(arrayOfMemberIDs.length)
         let person = random(arrayOfMemberIDs)

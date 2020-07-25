@@ -67,7 +67,8 @@ module.exports.run = async (bot, message, args) => {
             } else if (category === "addRole") {
                 if (observe.role.roleOnly === false) return message.channel.send(errorEmbed("You must turn `roleOnly` on."))
                 option = args.slice(1).join(" ")
-                if (!message.guild.roles.cache.find(val => val.name === option)) return message.channel.send(errorEmbed("This role doesn't exist."))
+                let roles = await message.guild.roles.fetch()
+                if (!roles.find(val => val.name === option)) return message.channel.send(errorEmbed("This role doesn't exist."))
                 let array = observe.role.roleList
                 if (array.includes(option)) return message.channel.send(errorEmbed("This role already is in the list."))
                 array.push(option)

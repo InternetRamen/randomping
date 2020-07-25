@@ -1,8 +1,11 @@
-module.exports.roleOnly = async (settings, member) => {
+module.exports.roleOnly = async (settings, member, guild) => {
         if (settings.role.roleOnly === true) {
-            let memberRoles = member.roles.cache.map(val => val.name)
+            let roles = member.roles.cache
+            let collection = await guild.roles.fetch()
+            roles = roles.map(val => val.id)
+            roles = roles.map(val => collection.get(val).name)
             let roleList = settings.role.roleList
-            if (!memberRoles.some(val => roleList.includes(val))) return "Invalid Permissions"
+            if (!roles.some(val => roleList.includes(val))) return "Invalid Permissions"
             return "Pass"
         }  else {
             return "Pass"

@@ -34,15 +34,15 @@
     },
     {
       "name": "removeRole",
-      "description": "Removes a role to the list."
+      "description": "Removes a role to the list.\nUsage: `?config removeRole <roleName>`"
     },
     {
       "name": "addRoles",
-      "description": "Displays the current list of roles that can use @someone."
+      "description": "Displays the current list of roles that can use @someone.\nUsage: `?config addRole <roleName>`"
     },
     {
       "name": "pingedBy",
-      "description": "Turns on/off the message that tells the person who got pinged who you are."
+      "description": "Turns on/off the message that tells the person who got pinged who you are.\nUsage: `?config prefix <prefix>`"
     },
     {
       "name": "prefix",
