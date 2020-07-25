@@ -1,0 +1,60 @@
+{
+  "value": [
+    {
+      "name": "filterBots",
+      "description": "Filters bots in the command @someone."
+    },
+    {
+      "name": "adminOnly",
+      "description": "Makes @someone only for admins."
+    },
+    {
+      "name": "selfPing",
+      "description": "You can no longer ping yourself through @someone."
+    },
+    {
+      "name": "commandOnly",
+      "description": "Turns @someone into a command so @someone in between text does not work."
+    },
+    {
+      "name": "bypassOpt",
+      "description": "Bypass opt and include people who have opted out of being pinged."
+    },
+    {
+      "name": "roleOnly",
+      "description": "Prevents members without certain roles to use @someone.\nSpecified by: `?config addRole <roleName>`\n`?config removeRole <roleName>`\n`?config roleList`"
+    },
+    {
+      "name": "addRole",
+      "description": "Adds a role to the list."
+    },
+    {
+      "name": "roleList",
+      "description": "Displays all the roles that can use the command."
+    },
+    {
+      "name": "removeRole",
+      "description": "Removes a role to the list."
+    },
+    {
+      "name": "addRoles",
+      "description": "Displays the current list of roles that can use @someone."
+    },
+    {
+      "name": "pingedBy",
+      "description": "Turns on/off the message that tells the person who got pinged who you are."
+    },
+    {
+      "name": "prefix",
+      "description": "Change the bot's prefix."
+    },
+    {
+      "name": "tips",
+      "description": "Updates on the bot are often shown here."
+    },
+    {
+      "name": "settings",
+      "description": "Displays the current settings."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "random-ping",
+  "version": "1.0.0",
+  "description": "A bot that pings a random person!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bobthemoose/randomping.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot"
+  ],
+  "author": "moose#2228",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bobthemoose/randomping/issues"
+  },
+  "homepage": "https://github.com/Bobthemoose/randomping#readme",
+  "dependencies": {
+    "better-sqlite-pool": "^0.3.0",
+    "discord.js": "^12.2.0",
+    "enmap": "^5.4.0"
+  }
+}
