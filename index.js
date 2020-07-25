@@ -123,12 +123,6 @@ bot.on('message', async message => {
 
 });
 
-bot.on('message', async message => {
-    if (message.channel.type === "dm") return;
-    if (message.author.bot) return;
-
-
-});
 
 
 
